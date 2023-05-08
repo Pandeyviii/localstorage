@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sharpner <assignment-1></assignment-1></title>
+    <style>
+        body{
+            background-image: url(ass-12.webp);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        div.form{
+            display: block;
+            text-align: center; 
+            border-style:solid;
+         }
+        form{
+            display: inline-block;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: left; 
+        }
+   
+
+    </style>
+</head>
+<body>
+   <div class="form2">
+    <h1 style="text-align: center; color: red;">Book a Call</h1>
+    <p style="text-align: center;">Book a call slot and our representative will call you within 1 hour of selected time</p>
+    <hr>
+    <div class="form">
+        <form action="#" onsubmit="onSignUp(event)">
+            <label>Name</label><br>
+            <input type="text" name="name" id="name"><br>
+            <label for="">Email</label><br>
+            <input type="email" name="email"><br>
+            <label for="">Phone</label><br>
+            <input type="number" name="number"><br>
+            <label for="">Time for call:</label><br>
+            <input type="datetime" ><br>
+            <button style="color: green; margin-top: 15px;">Get a Call</button>
+        </form>
+    </div>
+   </div>
+   <script>
+    function onSignUp(event){
+        event.preventDefault();
+        console.log(event.target.name.value);
+    }
+   </script>
+</body>
+</html>

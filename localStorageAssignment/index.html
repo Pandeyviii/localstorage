@@ -31,19 +31,36 @@
             // localStorage.setItem('email',email);
             // localStorage.setItem('phone',phone);
             const obj={
-                name,
-                email,
-                phone
+                name:"vishal",
+                email:"abc@gmail.com",
+                phone:234444544444
 
             }
+          //  showTheOutput(obj);
            // localStorage.setItem(email,JSON.stringify(obj));
         //    axios.post("https://crudcrud.com/api/cfbacf43f16c427683345935be6dfbd3/appointmentData",obj)
         //    .then((res)=>console.log(res))
         //    .catch((err)=>console.log(err));
+
+        }
+        window.addEventListener("DOMContentLoaded",()=>{
+            axios.get("https://crudcrud.com/api/cfbacf43f16c427683345935be6dfbd3/appointmentData")
+            .then((response)=>{
+                console.log(response);
+                for(var i=0;i<response.data.length;i++){
+                    showTheOutput(response.data[i]);
+                }
+            })
+            .catch((err)=>console.log(err));
+        })
+        function showTheOutput(obj){
             var parent=document.getElementById("listOfItems");
             var child=document.createElement('li');
             child.textContent=obj.name+"-"+obj.email+"-"+obj.phone;
             var deleteBtn=document.createElement('input');
+            var editBtn=document.createElement('input');
+            editBtn.type="button";
+            editBtn.value="edit";
             deleteBtn.type="button";
             deleteBtn.value="Delete";
             deleteBtn.onclick=()=>{
@@ -51,14 +68,9 @@
                 parent.removeChild(child)
             }
             child.appendChild(deleteBtn);
+            child.appendChild(editBtn);
             parent.appendChild(child);
-
         }
-        window.addEventListener("DOMContentLoaded",()=>{
-            axios.get("https://crudcrud.com/api/cfbacf43f16c427683345935be6dfbd3/appointmentData")
-            .then((response)=>console.log(response))
-            .catch((err)=>console.log(err));
-        })
 
     </script>
 </body>

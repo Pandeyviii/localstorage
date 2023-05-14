@@ -20,6 +20,7 @@
         </ul>
 
     </form>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
         function addToLocalStorage(event){
             event.preventDefault();
@@ -35,7 +36,10 @@
                 phone
 
             }
-            localStorage.setItem(email,JSON.stringify(obj));
+           // localStorage.setItem(email,JSON.stringify(obj));
+           axios.post("https://crudcrud.com/api/cfbacf43f16c427683345935be6dfbd3/appointmentData",obj)
+           .then((res)=>console.log(res))
+           .catch((err)=>console.log(err));
             var parent=document.getElementById("listOfItems");
             var child=document.createElement('li');
             child.textContent=obj.name+"-"+obj.email+"-"+obj.phone;

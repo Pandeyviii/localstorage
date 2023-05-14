@@ -15,6 +15,9 @@
         <label for="">Phone</label>
         <input type="tel" name="phoneNumber">
         <button>submit</button>
+        <ul id="listOfItems">
+
+        </ul>
 
     </form>
     <script>
@@ -23,9 +26,28 @@
             const name=event.target.userName.value;
             const email=event.target.userEmail.value;
             const phone=event.target.phoneNumber.value;
-            localStorage.setItem('name',name);
-            localStorage.setItem('email',email);
-            localStorage.setItem('phone',phone);
+            // localStorage.setItem('name',name);
+            // localStorage.setItem('email',email);
+            // localStorage.setItem('phone',phone);
+            const obj={
+                name,
+                email,
+                phone
+
+            }
+            localStorage.setItem(email,JSON.stringify(obj));
+            var parent=document.getElementById("listOfItems");
+            var child=document.createElement('li');
+            child.textContent=obj.name+"-"+obj.email+"-"+obj.phone;
+            var deleteBtn=document.createElement('input');
+            deleteBtn.type="button";
+            deleteBtn.value="Delete";
+            deleteBtn.onclick=()=>{
+                localStorage.removeItem(obj.email);
+                parent.removeChild(child)
+            }
+            child.appendChild(deleteBtn);
+            parent.appendChild(child);
 
         }
 
